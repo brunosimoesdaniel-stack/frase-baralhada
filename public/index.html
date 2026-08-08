@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -9,7 +8,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Frase Baralhada 🎭</title>
+<title>Pedido de Oração 🙏</title>
 
 <style>
 
@@ -32,7 +31,7 @@ body {
         linear-gradient(
             135deg,
             #667eea,
-            #764ba2
+            #8e7cc3
         );
 
     color: #222;
@@ -58,7 +57,7 @@ body {
 
     box-shadow:
         0 20px 60px
-        rgba(0,0,0,.25);
+        rgba(0,0,0,.20);
 
     text-align: center;
 }
@@ -111,7 +110,7 @@ textarea:focus {
 }
 
 textarea {
-    min-height: 140px;
+    min-height: 160px;
     resize: vertical;
 }
 
@@ -153,7 +152,7 @@ button:hover {
         linear-gradient(
             135deg,
             #667eea,
-            #764ba2
+            #8e7cc3
         );
 }
 
@@ -185,11 +184,11 @@ button:hover {
         0;
 }
 
-.players {
+.people {
     margin-top: 25px;
 }
 
-.player {
+.person {
 
     display: flex;
 
@@ -230,7 +229,7 @@ button:hover {
         linear-gradient(
             135deg,
             #667eea,
-            #764ba2
+            #8e7cc3
         );
 
     color: white;
@@ -239,9 +238,9 @@ button:hover {
 
     border-radius: 18px;
 
-    font-size: 1.4rem;
+    font-size: 1.25rem;
 
-    line-height: 1.5;
+    line-height: 1.6;
 
     margin:
         25px
@@ -276,6 +275,8 @@ button:hover {
     margin:
         20px
         0;
+
+    line-height: 1.5;
 }
 
 .small {
@@ -291,6 +292,49 @@ button:hover {
     color: #333;
 
     margin-top: 10px;
+}
+
+.prayer-icon {
+    font-size: 48px;
+    margin-bottom: 5px;
+}
+
+.divider {
+
+    margin: 25px 0;
+
+    color: #aaa;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    height: 1px;
+
+    background: #e5e5e5;
+
+    flex: 1;
+}
+
+.encouragement {
+
+    background: #f6f3ff;
+
+    color: #5c4d8a;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    margin-top: 20px;
+
+    line-height: 1.5;
 }
 
 @media (max-width: 500px) {
@@ -323,35 +367,30 @@ button:hover {
     class="card"
 >
 
-    <div class="logo">🎭</div>
+    <div class="logo">🙏</div>
 
-    <h1>Frase Baralhada</h1>
+    <h1>Pedido de Oração</h1>
 
     <p class="subtitle">
-        Escreve uma frase.
+        Partilha um pedido de oração
         <br>
-        Depois descobre a frase de outra pessoa.
+        e ora também por outra pessoa.
     </p>
 
     <button
         class="primary"
         onclick="createRoom()"
     >
-        🎮 Criar novo jogo
+        🙏 Criar sala de oração
     </button>
 
-    <div
-        style="
-            margin:25px 0;
-            color:#aaa;
-        "
-    >
+    <div class="divider">
         ou
     </div>
 
     <input
         id="roomInput"
-        placeholder="Código da sala"
+        placeholder="Código do sala"
         maxlength="5"
         style="
             text-transform:uppercase;
@@ -370,25 +409,26 @@ button:hover {
         class="primary"
         onclick="joinExistingRoom()"
     >
-        Entrar na sala →
+        Entrar no sala →
     </button>
 
 </div>
 
 
-<!-- LOBBY -->
+<!-- sala DE ORAÇÃO -->
 
 <div
     id="lobby"
     class="card hidden"
 >
 
-    <div class="logo">🎮</div>
+    <div class="logo">🕊️</div>
 
-    <h2>Sala criada!</h2>
+    <h2>Sala para pedidos de Oração</h2>
 
     <p class="subtitle">
-        Envia este código aos teus amigos:
+        Partilha este código com as pessoas
+        com quem queres orar.
     </p>
 
     <div
@@ -401,12 +441,12 @@ button:hover {
         class="secondary"
         onclick="copyLink()"
     >
-        🔗 Copiar link
+        🔗 Copiar convite
     </button>
 
     <div
         id="players"
-        class="players"
+        class="people"
     >
     </div>
 
@@ -419,59 +459,64 @@ button:hover {
             class="primary"
             onclick="startGame()"
         >
-            ✍️ Começar
+            🙏 Começar momento de oração
         </button>
 
         <button
             class="primary danger"
             onclick="deleteRoom()"
         >
-            🗑️ Fechar sala
+            Fechar sala
         </button>
 
     </div>
 
     <p class="small">
-        O anfitrião começa o jogo quando todos
-        tiverem entrado.
+        O responsável pelo sala inicia o momento
+        quando todos estiverem presentes.
     </p>
 
 </div>
 
 
-<!-- ESCREVER -->
+<!-- ESCREVER PEDIDO -->
 
 <div
     id="writing"
     class="card hidden"
 >
 
-    <div class="logo">✍️</div>
+    <div class="logo">🙏</div>
 
-    <h2>Escreve a tua frase</h2>
+    <h2>Partilha o teu pedido</h2>
 
     <p class="subtitle">
-        Só tu vais saber o que escreveste.
+        Escreve aquilo pelo qual gostarias
+        que alguém orasse.
     </p>
 
     <textarea
         id="phrase"
         maxlength="500"
-        placeholder="Escreve aqui..."
+        placeholder="Escreve aqui o teu pedido de oração..."
     ></textarea>
+
+    <div class="warning">
+        🤍 O teu pedido é completamente anónimo
+    </div>
 
     <button
         class="primary"
         onclick="submitPhrase()"
     >
-        Confirmar frase ✓
+        🙏 Entregar pedido
     </button>
 
     <div
         id="writingStatus"
         class="status"
     >
-        Ainda não enviaste a tua frase.
+        Ainda não partilhaste o teu pedido.
     </div>
 
 </div>
@@ -484,18 +529,19 @@ button:hover {
     class="card hidden"
 >
 
-    <div class="logo">⏳</div>
+    <div class="logo">🕊️</div>
 
-    <h2>Todos estão a escrever...</h2>
+    <h2>Momento de oração</h2>
 
     <p class="subtitle">
-        As frases ficam escondidas até
-        toda a gente terminar.
+        Os pedidos estão a ser preparados.
+        <br>
+        Em breve receberás um pedido para colocar em oração.
     </p>
 
     <div
         id="waitingPlayers"
-        class="players"
+        class="people"
     >
     </div>
 
@@ -508,24 +554,29 @@ button:hover {
             class="primary"
             onclick="shuffle()"
         >
-            🎲 BARALHAR FRASES
+            🙏 Distribuir pedidos
         </button>
 
+    </div>
+
+    <div class="encouragement">
+        ✨ Enquanto esperas, podes já começar
+        a orar pelas pessoas deste grupo.
     </div>
 
 </div>
 
 
-<!-- RESULTADO -->
+<!-- PEDIDO RECEBIDO -->
 
 <div
     id="result"
     class="card hidden"
 >
 
-    <div class="logo">🎁</div>
+    <div class="logo">🤍</div>
 
-    <h2>A tua frase recebida:</h2>
+    <h2>Um pedido para colocares em oração</h2>
 
     <div
         id="receivedPhrase"
@@ -534,40 +585,48 @@ button:hover {
     </div>
 
     <div class="success">
-        🔒 Esta frase foi enviada apenas para ti.
+        🙏 Este pedido foi confiado a ti.
+        <br>
+        Reserva um momento para orar por esta pessoa.
     </div>
 
     <button
         class="primary"
         onclick="hideResult()"
     >
-        Já vi ✓
+        Comprometo-me ao longo da semana a orar por este pedido ✓
     </button>
 
 </div>
 
 
-<!-- FIM -->
+<!-- FINAL -->
 
 <div
     id="finished"
     class="card hidden"
 >
 
-    <div class="logo">🎉</div>
+    <div class="logo">🕊️</div>
 
-    <h1>Ronda terminada!</h1>
+    <h1>Momento concluído</h1>
 
     <p class="subtitle">
-        Todos receberam uma frase.
+        Obrigado por participares neste momento
+        de oração e por carregares o pedido de outra pessoa.
     </p>
+
+    <div class="encouragement">
+        🤍 Que Deus abençoe cada pessoa,
+        cada pedido e cada oração feita neste sala.
+    </div>
 
     <button
         id="newRoundButton"
         class="primary hidden"
         onclick="newRound()"
     >
-        🔄 Nova ronda
+        🙏 Novo momento de oração
     </button>
 
 </div>
@@ -607,7 +666,7 @@ function showScreen(id) {
 
 
 /*
- * Criar sala
+ * Criar sala de oração
  */
 async function createRoom() {
 
@@ -642,7 +701,7 @@ async function createRoom() {
 
 
 /*
- * Entrar numa sala
+ * Entrar num sala
  */
 function joinExistingRoom() {
 
@@ -660,16 +719,20 @@ function joinExistingRoom() {
             .trim();
 
     if (!code) {
+
         alert(
-            "Escreve o código da sala."
+            "Escreve o código do sala."
         );
+
         return;
     }
 
     if (!name) {
+
         alert(
             "Escreve o teu nome."
         );
+
         return;
     }
 
@@ -682,6 +745,10 @@ function joinExistingRoom() {
 
 /*
  * Ligação WebSocket
+ *
+ * Os nomes dos tipos das mensagens
+ * são mantidos para continuar compatível
+ * com o servidor existente.
  */
 function connect() {
 
@@ -815,7 +882,7 @@ function handleMessage(data) {
             document
                 .getElementById("writingStatus")
                 .textContent =
-                    "Ainda não enviaste a tua frase.";
+                    "Ainda não partilhaste o teu pedido.";
 
             showScreen("writing");
 
@@ -833,7 +900,7 @@ function handleMessage(data) {
             document
                 .getElementById("writingStatus")
                 .textContent =
-                    "✓ Frase guardada! Aguardando os outros...";
+                    "✓ Pedido recebido. Aguardando os outros...";
 
             break;
 
@@ -850,9 +917,7 @@ function handleMessage(data) {
             document
                 .getElementById("receivedPhrase")
                 .textContent =
-                    '"' +
-                    data.phrase +
-                    '"';
+                    data.phrase;
 
             showScreen("result");
 
@@ -882,7 +947,7 @@ function handleMessage(data) {
         case "room_deleted":
 
             alert(
-                "A sala foi encerrada."
+                "O sala de oração foi encerrado."
             );
 
             location.href =
@@ -903,25 +968,25 @@ function handleMessage(data) {
 
 
 /*
- * Mostrar jogadores
+ * Mostrar pessoas
  */
 function renderPlayers(players) {
 
     const html =
         players
-            .map(player => {
+            .map(person => {
 
                 const status =
-                    player.submitted
+                    person.submitted
                         ? '<span class="check">✓</span>'
-                        : '<span>⌛</span>';
+                        : '<span>🤍</span>';
 
                 return `
-                    <div class="player">
+                    <div class="person">
 
                         <span>
                             ${escapeHtml(
-                                player.name
+                                person.name
                             )}
                         </span>
 
@@ -946,7 +1011,7 @@ function renderPlayers(players) {
 
 
 /*
- * Controlos do anfitrião
+ * Controlos do responsável
  */
 function updateHostControls() {
 
@@ -972,7 +1037,10 @@ function updateHostControls() {
 
 
 /*
- * Começar
+ * Começar momento de oração
+ *
+ * Mantém type:"start" para compatibilidade
+ * com o servidor existente.
  */
 function startGame() {
 
@@ -985,7 +1053,7 @@ function startGame() {
 
 
 /*
- * Enviar frase
+ * Enviar pedido de oração
  */
 function submitPhrase() {
 
@@ -998,7 +1066,7 @@ function submitPhrase() {
     if (!phrase) {
 
         alert(
-            "Escreve uma frase primeiro."
+            "Escreve um pedido de oração primeiro."
         );
 
         return;
@@ -1014,7 +1082,10 @@ function submitPhrase() {
 
 
 /*
- * Baralhar
+ * Distribuir pedidos
+ *
+ * Mantém type:"shuffle" para
+ * compatibilidade com o servidor.
  */
 function shuffle() {
 
@@ -1027,7 +1098,7 @@ function shuffle() {
 
 
 /*
- * Esconder resultado
+ * Esconder pedido recebido
  */
 function hideResult() {
 
@@ -1038,7 +1109,7 @@ function hideResult() {
 
 
 /*
- * Nova ronda
+ * Novo momento de oração
  */
 function newRound() {
 
@@ -1051,13 +1122,13 @@ function newRound() {
 
 
 /*
- * Apagar sala
+ * Fechar sala
  */
 function deleteRoom() {
 
     if (
         !confirm(
-            "Queres mesmo fechar a sala?"
+            "Queres mesmo fechar este sala de oração?"
         )
     ) {
         return;
@@ -1072,7 +1143,7 @@ function deleteRoom() {
 
 
 /*
- * Copiar link
+ * Copiar convite
  */
 async function copyLink() {
 
@@ -1087,13 +1158,13 @@ async function copyLink() {
             .writeText(url);
 
         alert(
-            "Link copiado! Envia-o aos teus amigos."
+            "Convite copiado! Envia-o às pessoas que vão participar."
         );
 
     } catch {
 
         prompt(
-            "Copia este link:",
+            "Copia este convite:",
             url
         );
     }
@@ -1150,4 +1221,3 @@ checkRoomFromUrl();
 
 </body>
 </html>
-```
