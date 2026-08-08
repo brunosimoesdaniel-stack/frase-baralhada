@@ -1,4 +1,3 @@
-```javascript
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -635,10 +634,5 @@ wss.on("connection", (ws) => {
 
 
 server.listen(PORT, () => {
-
-    console.log(
-        `Frase Baralhada a correr na porta ${PORT}`
-    );
-
+    console.log(`Frase Baralhada a correr na porta ${PORT}`);
 });
-```
