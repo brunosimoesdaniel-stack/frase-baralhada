@@ -1,0 +1,1153 @@
+```html
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Frase Baralhada 🎭</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    color: #222;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.card {
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.25);
+
+    text-align: center;
+}
+
+.logo {
+    font-size: 60px;
+}
+
+h1 {
+    margin:
+        5px
+        0
+        10px;
+
+    font-size: 2.2rem;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.subtitle {
+    color: #777;
+    line-height: 1.5;
+}
+
+input,
+textarea {
+
+    width: 100%;
+
+    border:
+        2px solid
+        #e1e1e1;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #667eea;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+button {
+
+    border: 0;
+
+    border-radius: 14px;
+
+    padding:
+        14px
+        20px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition: .2s;
+}
+
+button:hover {
+    transform:
+        translateY(-2px);
+}
+
+.primary {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+}
+
+.secondary {
+    background: #eee;
+}
+
+.danger {
+    background: #ffe3e3;
+    color: #b71c1c;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.code {
+
+    font-size: 2.5rem;
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    color: #667eea;
+
+    margin:
+        20px
+        0;
+}
+
+.players {
+    margin-top: 25px;
+}
+
+.player {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    background: #f5f5f5;
+
+    border-radius: 12px;
+
+    padding: 12px 15px;
+
+    margin-bottom: 8px;
+}
+
+.check {
+    color: #20a052;
+}
+
+.status {
+
+    background: #f5f5f5;
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    margin-top: 20px;
+
+    color: #666;
+}
+
+.received {
+
+    background:
+        linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+    color: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    font-size: 1.4rem;
+
+    line-height: 1.5;
+
+    margin:
+        25px
+        0;
+}
+
+.warning {
+
+    background: #fff5d6;
+
+    color: #795900;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    margin-top: 15px;
+}
+
+.success {
+
+    background: #e2f7e8;
+
+    color: #176b2c;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    margin:
+        20px
+        0;
+}
+
+.small {
+    font-size: 13px;
+    color: #999;
+    margin-top: 20px;
+}
+
+.copy {
+
+    background: #eee;
+
+    color: #333;
+
+    margin-top: 10px;
+}
+
+@media (max-width: 500px) {
+
+    .card {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .code {
+        font-size: 2rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+<!-- INÍCIO -->
+
+<div
+    id="home"
+    class="card"
+>
+
+    <div class="logo">🎭</div>
+
+    <h1>Frase Baralhada</h1>
+
+    <p class="subtitle">
+        Escreve uma frase.
+        <br>
+        Depois descobre a frase de outra pessoa.
+    </p>
+
+    <button
+        class="primary"
+        onclick="createRoom()"
+    >
+        🎮 Criar novo jogo
+    </button>
+
+    <div
+        style="
+            margin:25px 0;
+            color:#aaa;
+        "
+    >
+        ou
+    </div>
+
+    <input
+        id="roomInput"
+        placeholder="Código da sala"
+        maxlength="5"
+        style="
+            text-transform:uppercase;
+            text-align:center;
+        "
+    >
+
+    <input
+        id="nameInput"
+        placeholder="O teu nome"
+        maxlength="30"
+        style="margin-top:10px"
+    >
+
+    <button
+        class="primary"
+        onclick="joinExistingRoom()"
+    >
+        Entrar na sala →
+    </button>
+
+</div>
+
+
+<!-- LOBBY -->
+
+<div
+    id="lobby"
+    class="card hidden"
+>
+
+    <div class="logo">🎮</div>
+
+    <h2>Sala criada!</h2>
+
+    <p class="subtitle">
+        Envia este código aos teus amigos:
+    </p>
+
+    <div
+        id="roomCode"
+        class="code"
+    >
+    </div>
+
+    <button
+        class="secondary"
+        onclick="copyLink()"
+    >
+        🔗 Copiar link
+    </button>
+
+    <div
+        id="players"
+        class="players"
+    >
+    </div>
+
+    <div
+        id="hostControls"
+        class="hidden"
+    >
+
+        <button
+            class="primary"
+            onclick="startGame()"
+        >
+            ✍️ Começar
+        </button>
+
+        <button
+            class="primary danger"
+            onclick="deleteRoom()"
+        >
+            🗑️ Fechar sala
+        </button>
+
+    </div>
+
+    <p class="small">
+        O anfitrião começa o jogo quando todos
+        tiverem entrado.
+    </p>
+
+</div>
+
+
+<!-- ESCREVER -->
+
+<div
+    id="writing"
+    class="card hidden"
+>
+
+    <div class="logo">✍️</div>
+
+    <h2>Escreve a tua frase</h2>
+
+    <p class="subtitle">
+        Só tu vais saber o que escreveste.
+    </p>
+
+    <textarea
+        id="phrase"
+        maxlength="500"
+        placeholder="Escreve aqui..."
+    ></textarea>
+
+    <button
+        class="primary"
+        onclick="submitPhrase()"
+    >
+        Confirmar frase ✓
+    </button>
+
+    <div
+        id="writingStatus"
+        class="status"
+    >
+        Ainda não enviaste a tua frase.
+    </div>
+
+</div>
+
+
+<!-- ESPERA -->
+
+<div
+    id="waiting"
+    class="card hidden"
+>
+
+    <div class="logo">⏳</div>
+
+    <h2>Todos estão a escrever...</h2>
+
+    <p class="subtitle">
+        As frases ficam escondidas até
+        toda a gente terminar.
+    </p>
+
+    <div
+        id="waitingPlayers"
+        class="players"
+    >
+    </div>
+
+    <div
+        id="shuffleControls"
+        class="hidden"
+    >
+
+        <button
+            class="primary"
+            onclick="shuffle()"
+        >
+            🎲 BARALHAR FRASES
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- RESULTADO -->
+
+<div
+    id="result"
+    class="card hidden"
+>
+
+    <div class="logo">🎁</div>
+
+    <h2>A tua frase recebida:</h2>
+
+    <div
+        id="receivedPhrase"
+        class="received"
+    >
+    </div>
+
+    <div class="success">
+        🔒 Esta frase foi enviada apenas para ti.
+    </div>
+
+    <button
+        class="primary"
+        onclick="hideResult()"
+    >
+        Já vi ✓
+    </button>
+
+</div>
+
+
+<!-- FIM -->
+
+<div
+    id="finished"
+    class="card hidden"
+>
+
+    <div class="logo">🎉</div>
+
+    <h1>Ronda terminada!</h1>
+
+    <p class="subtitle">
+        Todos receberam uma frase.
+    </p>
+
+    <button
+        id="newRoundButton"
+        class="primary hidden"
+        onclick="newRound()"
+    >
+        🔄 Nova ronda
+    </button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+let socket = null;
+
+let roomCode = null;
+let playerId = null;
+let isHost = false;
+let playerName = null;
+
+let submitted = false;
+
+
+/*
+ * Mostrar ecrã
+ */
+function showScreen(id) {
+
+    document
+        .querySelectorAll(".card")
+        .forEach(card =>
+            card.classList.add("hidden")
+        );
+
+    document
+        .getElementById(id)
+        .classList
+        .remove("hidden");
+}
+
+
+/*
+ * Criar sala
+ */
+async function createRoom() {
+
+    const name =
+        prompt("Qual é o teu nome?");
+
+    if (!name || !name.trim()) {
+        return;
+    }
+
+    const response =
+        await fetch(
+            "/api/create-room"
+        );
+
+    const data =
+        await response.json();
+
+    roomCode =
+        data.code;
+
+    playerId =
+        data.hostId;
+
+    isHost = true;
+
+    playerName =
+        name.trim();
+
+    connect();
+}
+
+
+/*
+ * Entrar numa sala
+ */
+function joinExistingRoom() {
+
+    const code =
+        document
+            .getElementById("roomInput")
+            .value
+            .trim()
+            .toUpperCase();
+
+    const name =
+        document
+            .getElementById("nameInput")
+            .value
+            .trim();
+
+    if (!code) {
+        alert(
+            "Escreve o código da sala."
+        );
+        return;
+    }
+
+    if (!name) {
+        alert(
+            "Escreve o teu nome."
+        );
+        return;
+    }
+
+    roomCode = code;
+    playerName = name;
+
+    connect();
+}
+
+
+/*
+ * Ligação WebSocket
+ */
+function connect() {
+
+    const protocol =
+        location.protocol === "https:"
+            ? "wss:"
+            : "ws:";
+
+    socket =
+        new WebSocket(
+            protocol +
+            "//" +
+            location.host
+        );
+
+    socket.onopen = () => {
+
+        socket.send(
+            JSON.stringify({
+                type: "join",
+
+                code: roomCode,
+
+                name: playerName,
+
+                hostId:
+                    isHost
+                        ? playerId
+                        : ""
+            })
+        );
+    };
+
+
+    socket.onmessage = event => {
+
+        const data =
+            JSON.parse(
+                event.data
+            );
+
+        handleMessage(data);
+    };
+
+
+    socket.onerror = () => {
+
+        alert(
+            "Não foi possível ligar ao servidor."
+        );
+    };
+
+
+    socket.onclose = () => {
+
+        if (
+            !document
+                .getElementById("home")
+                .classList
+                .contains("hidden")
+        ) {
+            return;
+        }
+
+        alert(
+            "A ligação ao servidor foi perdida."
+        );
+    };
+}
+
+
+/*
+ * Mensagens do servidor
+ */
+function handleMessage(data) {
+
+    switch (data.type) {
+
+
+        case "joined":
+
+            playerId =
+                data.id;
+
+            if (data.isHost) {
+                isHost = true;
+            }
+
+            document
+                .getElementById("roomCode")
+                .textContent =
+                    data.room;
+
+            updateHostControls();
+
+            showScreen("lobby");
+
+            break;
+
+
+        case "lobby":
+
+            renderPlayers(
+                data.players
+            );
+
+            if (
+                data.hostId ===
+                playerId
+            ) {
+                isHost = true;
+            }
+
+            updateHostControls();
+
+            break;
+
+
+        case "writing_started":
+
+            submitted = false;
+
+            document
+                .getElementById("phrase")
+                .value = "";
+
+            document
+                .getElementById("phrase")
+                .disabled = false;
+
+            document
+                .getElementById("writingStatus")
+                .textContent =
+                    "Ainda não enviaste a tua frase.";
+
+            showScreen("writing");
+
+            break;
+
+
+        case "phrase_saved":
+
+            submitted = true;
+
+            document
+                .getElementById("phrase")
+                .disabled = true;
+
+            document
+                .getElementById("writingStatus")
+                .textContent =
+                    "✓ Frase guardada! Aguardando os outros...";
+
+            break;
+
+
+        case "all_finished":
+
+            showScreen("waiting");
+
+            break;
+
+
+        case "result":
+
+            document
+                .getElementById("receivedPhrase")
+                .textContent =
+                    '"' +
+                    data.phrase +
+                    '"';
+
+            showScreen("result");
+
+            break;
+
+
+        case "became_host":
+
+            isHost = true;
+
+            updateHostControls();
+
+            break;
+
+
+        case "game_reset":
+
+            alert(
+                data.message
+            );
+
+            showScreen("lobby");
+
+            break;
+
+
+        case "room_deleted":
+
+            alert(
+                "A sala foi encerrada."
+            );
+
+            location.href =
+                location.pathname;
+
+            break;
+
+
+        case "error":
+
+            alert(
+                data.message
+            );
+
+            break;
+    }
+}
+
+
+/*
+ * Mostrar jogadores
+ */
+function renderPlayers(players) {
+
+    const html =
+        players
+            .map(player => {
+
+                const status =
+                    player.submitted
+                        ? '<span class="check">✓</span>'
+                        : '<span>⌛</span>';
+
+                return `
+                    <div class="player">
+
+                        <span>
+                            ${escapeHtml(
+                                player.name
+                            )}
+                        </span>
+
+                        ${status}
+
+                    </div>
+                `;
+
+            })
+            .join("");
+
+    document
+        .getElementById("players")
+        .innerHTML =
+            html;
+
+    document
+        .getElementById("waitingPlayers")
+        .innerHTML =
+            html;
+}
+
+
+/*
+ * Controlos do anfitrião
+ */
+function updateHostControls() {
+
+    if (!isHost) {
+        return;
+    }
+
+    document
+        .getElementById("hostControls")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("shuffleControls")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("newRoundButton")
+        .classList
+        .remove("hidden");
+}
+
+
+/*
+ * Começar
+ */
+function startGame() {
+
+    socket.send(
+        JSON.stringify({
+            type: "start"
+        })
+    );
+}
+
+
+/*
+ * Enviar frase
+ */
+function submitPhrase() {
+
+    const phrase =
+        document
+            .getElementById("phrase")
+            .value
+            .trim();
+
+    if (!phrase) {
+
+        alert(
+            "Escreve uma frase primeiro."
+        );
+
+        return;
+    }
+
+    socket.send(
+        JSON.stringify({
+            type: "phrase",
+            phrase
+        })
+    );
+}
+
+
+/*
+ * Baralhar
+ */
+function shuffle() {
+
+    socket.send(
+        JSON.stringify({
+            type: "shuffle"
+        })
+    );
+}
+
+
+/*
+ * Esconder resultado
+ */
+function hideResult() {
+
+    showScreen(
+        "finished"
+    );
+}
+
+
+/*
+ * Nova ronda
+ */
+function newRound() {
+
+    socket.send(
+        JSON.stringify({
+            type: "new_round"
+        })
+    );
+}
+
+
+/*
+ * Apagar sala
+ */
+function deleteRoom() {
+
+    if (
+        !confirm(
+            "Queres mesmo fechar a sala?"
+        )
+    ) {
+        return;
+    }
+
+    socket.send(
+        JSON.stringify({
+            type: "delete_room"
+        })
+    );
+}
+
+
+/*
+ * Copiar link
+ */
+async function copyLink() {
+
+    const url =
+        location.origin +
+        "?room=" +
+        roomCode;
+
+    try {
+
+        await navigator.clipboard
+            .writeText(url);
+
+        alert(
+            "Link copiado! Envia-o aos teus amigos."
+        );
+
+    } catch {
+
+        prompt(
+            "Copia este link:",
+            url
+        );
+    }
+}
+
+
+/*
+ * Escapar HTML
+ */
+function escapeHtml(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+}
+
+
+/*
+ * Se alguém entrar através
+ * de ?room=ABCDE
+ */
+function checkRoomFromUrl() {
+
+    const params =
+        new URLSearchParams(
+            location.search
+        );
+
+    const room =
+        params.get("room");
+
+    if (room) {
+
+        document
+            .getElementById(
+                "roomInput"
+            )
+            .value =
+                room
+                    .toUpperCase();
+    }
+}
+
+
+checkRoomFromUrl();
+
+</script>
+
+</body>
+</html>
+```
